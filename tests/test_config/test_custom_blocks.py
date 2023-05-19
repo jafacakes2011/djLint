@@ -29,6 +29,22 @@ test_data = [
         ({"custom_blocks": "toc,example,verylongexampletagthatiskindaneattolookat"}),
         id="one",
     ),
+    pytest.param(
+        (
+            "{% custom_block %}\n"
+            "{% custom_block %}\n"
+            "    <p>Some text</p>\n"
+            "{% endcustom_block %}\n"
+        ),
+        (
+            "{% custom_block %}\n"
+            "{% custom_block %}\n"
+            "    <p>Some text</p>\n"
+            "{% endcustom_block %}\n"
+        ),
+        ({"custom_blocks": "custom_block"}),
+        id="custom_block_with_optional_end",
+    ),
 ]
 
 
