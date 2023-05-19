@@ -139,6 +139,24 @@ test_data = [
         ({}),
         id="set block",
     ),
+    pytest.param(
+        ("{% set abc %}Short text{% endset %}\n"),
+        ("{% set abc %}Short text{% endset %}\n"),
+        ({}),
+        id="set block short",
+    ),
+    pytest.param(
+        (
+            "{% set small %}Some really long text that should result in an indented block.{% endset %}\n"
+        ),
+        (
+            "{% set small %}\n"
+            "    Some really long text that should result in an indented block.\n"
+            "{% endset %}\n"
+        ),
+        ({}),
+        id="set block long",
+    ),
 ]
 
 
